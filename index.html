@@ -1,0 +1,1007 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Маркетингова стратегія — Conneaut Port Authority (Огайо, США)</title>
+
+  <style>
+    :root{
+      --bg: #0b1220;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.08);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --muted2: rgba(255,255,255,.55);
+      --line: rgba(255,255,255,.14);
+      --accent: #5eead4;   /* бірюзовий */
+      --accent2:#60a5fa;   /* синій */
+      --warn:#fbbf24;
+      --good:#34d399;
+      --bad:#fb7185;
+
+      --radius: 18px;
+      --shadow: 0 14px 40px rgba(0,0,0,.35);
+      --max: 1120px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 15% -10%, rgba(96,165,250,.28), transparent 55%),
+        radial-gradient(900px 600px at 85% 10%, rgba(94,234,212,.22), transparent 58%),
+        radial-gradient(800px 700px at 55% 120%, rgba(251,191,36,.10), transparent 60%),
+        linear-gradient(180deg, #070b14, #0b1220 35%, #070b14);
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    /* Layout */
+    .topbar{
+      position: sticky;
+      top:0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(7,11,20,.85), rgba(7,11,20,.55));
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px 18px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(94,234,212,.10);
+    }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 18px 18px 60px;
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap: 18px;
+    }
+
+    @media (max-width: 980px){
+      .wrap{ grid-template-columns: 1fr; }
+    }
+
+    /* Cards / panels */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .card-pad{ padding: 18px; }
+    .soft{
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    /* Header */
+    header.hero{
+      grid-column: 1 / -1;
+      padding: 22px 18px;
+      border-radius: calc(var(--radius) + 8px);
+      border: 1px solid rgba(255,255,255,.14);
+      background:
+        radial-gradient(700px 320px at 15% 10%, rgba(94,234,212,.18), transparent 55%),
+        radial-gradient(700px 320px at 85% 20%, rgba(96,165,250,.18), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+    }
+    .hero h1{
+      margin: 0 0 6px;
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.15;
+      letter-spacing: .2px;
+    }
+    .hero p{
+      margin: 0;
+      color: var(--muted);
+      max-width: 70ch;
+    }
+    .hero-meta{
+      margin-top: 14px;
+      display:flex;
+      flex-wrap: wrap;
+      gap:10px;
+    }
+
+    /* TOC */
+    aside .toc-title{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .toc-title h2{
+      margin:0;
+      font-size: 14px;
+      letter-spacing: .6px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .toc nav a{
+      display:block;
+      padding: 9px 10px;
+      border-radius: 12px;
+      color: var(--muted);
+      border: 1px solid transparent;
+    }
+    .toc nav a:hover{
+      color: var(--text);
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.10);
+      text-decoration:none;
+    }
+    .toc small{
+      color: var(--muted2);
+      display:block;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+    /* Mobile: collapsible TOC */
+    .toc details{ display:none; }
+    @media (max-width: 980px){
+      aside .toc{ display:none; }
+      .toc details{
+        display:block;
+        grid-column: 1 / -1;
+      }
+      details summary{
+        list-style:none;
+        cursor:pointer;
+        user-select:none;
+        display:flex;
+        align-items:center;
+        justify-content: space-between;
+        gap:12px;
+      }
+      details summary::-webkit-details-marker{ display:none; }
+      .chev{
+        width: 10px; height: 10px;
+        border-right: 2px solid var(--muted);
+        border-bottom: 2px solid var(--muted);
+        transform: rotate(45deg);
+        margin-left: auto;
+        transition: transform .18s ease;
+      }
+      details[open] .chev{ transform: rotate(225deg); }
+    }
+
+    /* Content typography */
+    main article{ padding: 18px; }
+    section{
+      margin: 0 0 14px;
+      padding: 16px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.16);
+    }
+    section + section{ margin-top: 14px; }
+    h2{
+      margin: 0 0 10px;
+      font-size: 20px;
+      line-height: 1.25;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    h2::before{
+      content:"";
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 6px rgba(96,165,250,.10);
+      flex: 0 0 auto;
+    }
+    h3{
+      margin: 14px 0 8px;
+      font-size: 16px;
+      line-height: 1.25;
+      color: rgba(255,255,255,.88);
+    }
+    p{ margin: 8px 0; color: rgba(255,255,255,.86); }
+    ul,ol{ margin: 8px 0 8px 22px; color: rgba(255,255,255,.86); }
+    li{ margin: 6px 0; }
+
+    .kpi-grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    @media (max-width: 780px){
+      .kpi-grid{ grid-template-columns: 1fr; }
+    }
+    .kpi{
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+    }
+    .kpi .label{ font-size: 12px; letter-spacing:.6px; text-transform: uppercase; color: var(--muted2); }
+    .kpi .value{ font-size: 18px; font-weight: 700; margin-top: 4px; }
+    .kpi .note{ font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+    .callout{
+      border-left: 3px solid var(--accent);
+      background: rgba(94,234,212,.08);
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(94,234,212,.18);
+      color: rgba(255,255,255,.88);
+      margin: 10px 0;
+    }
+
+    /* Tables */
+    .table-wrap{
+      margin-top: 10px;
+      overflow:auto;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+    }
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 680px;
+    }
+    th, td{
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      vertical-align: top;
+      text-align: left;
+      color: rgba(255,255,255,.86);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    th{
+      position: sticky;
+      top: 0;
+      background: rgba(10,16,30,.92);
+      color: rgba(255,255,255,.92);
+      font-weight: 700;
+      z-index: 1;
+    }
+    tr:hover td{ background: rgba(255,255,255,.03); }
+    .muted{ color: var(--muted); }
+    .center{ text-align:center; }
+    .nowrap{ white-space: nowrap; }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.86);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .pill.good{ border-color: rgba(52,211,153,.25); background: rgba(52,211,153,.10); }
+    .pill.warn{ border-color: rgba(251,191,36,.25); background: rgba(251,191,36,.10); }
+    .pill.bad{ border-color: rgba(251,113,133,.25); background: rgba(251,113,133,.10); }
+
+    /* Footnotes / Sources */
+    sup.ref{
+      font-size: 12px;
+      color: var(--muted);
+      margin-left: 2px;
+    }
+    .sources{
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px dashed rgba(255,255,255,.18);
+    }
+    .sources h3{ margin-top: 0; }
+    .sources ol{ margin-left: 18px; }
+    .sources li{ color: var(--muted); font-size: 14px; }
+
+    /* Print */
+    @media print{
+      body{ background:#fff; color:#111; }
+      .topbar, aside, details{ display:none !important; }
+      header.hero{ box-shadow:none; border-color:#ddd; }
+      .card, section{ box-shadow:none; background:#fff; border-color:#ddd; }
+      p, li, td, th{ color:#111 !important; }
+      th{ background:#f5f5f5 !important; }
+      a{ text-decoration:none; color:#111; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span class="dot" aria-hidden="true"></span>
+      <div class="badge">Формування маркетингової стратегії • Conneaut Port Authority (Ohio, USA)</div>
+      <div class="badge">Адаптивна сторінка (HTML + CSS)</div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <header class="hero">
+      <h1>Формування маркетингової стратегії для Conneaut Port Authority (Огайо, США)</h1>
+      <p>
+        Структурований матеріал за етапами: вибір об’єкта, аналіз підприємства, конкурентів, сегментація та позиціонування.
+        Дизайн оптимізовано для читання з телефону та ноутбука, таблиці — зі скролом.
+      </p>
+      <div class="hero-meta">
+        <span class="badge"><span class="dot" aria-hidden="true"></span>Об’єкт: CPA (Conneaut)</span>
+        <span class="badge">Сфера: логістика + рекреація</span>
+        <span class="badge">Ринок: Great Lakes</span>
+      </div>
+    </header>
+
+    <!-- Mobile TOC -->
+    <div class="card toc">
+      <details class="card-pad">
+        <summary>
+          <strong style="color:rgba(255,255,255,.88)">Зміст</strong>
+          <span class="chev" aria-hidden="true"></span>
+        </summary>
+        <nav style="margin-top:10px">
+          <a href="#stage-1">Етап 1 — Вибір об’єкта</a>
+          <a href="#stage-2">Етап 2 — Поточний стан</a>
+          <a href="#swot">SWOT-аналіз</a>
+          <a href="#pestle">PESTLE-аналіз</a>
+          <a href="#stage-3">Етап 3 — Конкуренти</a>
+          <a href="#stage-4">Етап 4 — Сегментація</a>
+          <a href="#positioning">Позиціонування</a>
+          <a href="#sources">Джерела (список)</a>
+        </nav>
+      </details>
+    </div>
+
+    <!-- Desktop TOC -->
+    <aside class="card toc">
+      <div class="card-pad">
+        <div class="toc-title">
+          <h2>Зміст</h2>
+          <span class="pill">Навігація</span>
+        </div>
+        <nav>
+          <a href="#stage-1">Етап 1 — Вибір об’єкта</a>
+          <a href="#stage-2">Етап 2 — Поточний стан</a>
+          <a href="#swot">SWOT-аналіз</a>
+          <a href="#pestle">PESTLE-аналіз</a>
+          <a href="#stage-3">Етап 3 — Конкуренти</a>
+          <a href="#stage-4">Етап 4 — Сегментація</a>
+          <a href="#positioning">Позиціонування</a>
+          <a href="#sources">Джерела (список)</a>
+        </nav>
+        <small>
+          Порада: якщо друкуєш — відкрий «Друк» у браузері (Ctrl/Cmd+P). Сторінка має стилі для друку.
+        </small>
+      </div>
+    </aside>
+
+    <main class="card">
+      <article>
+        <!-- ========================= -->
+        <!-- Stage 1 -->
+        <!-- ========================= -->
+        <section id="stage-1">
+          <h2>Етап 1: Вибір об’єкта дослідження</h2>
+
+          <p>
+            На початковому етапі було визначено перелік потенційних підприємств для аналізу маркетингової стратегії.
+            Враховувалися реальні організації з різних галузей, що відповідають критеріям доступності інформації,
+            наявності конкурентного середовища та узгодженості вибору з викладачем. Серед розглянутих варіантів –
+            декілька портових адміністрацій та суміжних підприємств, оскільки дана сфера пропонує цікавий приклад
+            поєднання логістичних і рекреаційних послуг. Нижче наведено таблицю з 5 потенційними об’єктами аналізу:
+          </p>
+
+          <div class="table-wrap" role="region" aria-label="Таблиця потенційних об’єктів аналізу" tabindex="0">
+            <table>
+              <thead>
+                <tr>
+                  <th>Підприємство</th>
+                  <th class="nowrap">Розмір</th>
+                  <th class="nowrap">Доступність інформації (1–5)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Conneaut Port Authority (CPA)</strong> – портова адміністрація міста Конніот, США</td>
+                  <td>Малий (≈10 співробітників)</td>
+                  <td><span class="pill good">5 — висока</span> Є офіційний сайт, звіти, новини у ЗМІ</td>
+                </tr>
+                <tr>
+                  <td>Lorain Port and Finance Authority – портова адміністрація м. Лорейн, США</td>
+                  <td>Малий/середній</td>
+                  <td><span class="pill warn">4 — добра</span> Частково доступні публічні дані, прес-релізи</td>
+                </tr>
+                <tr>
+                  <td>Ashtabula County Port Authority – портова адміністрація округу Ештабула, США</td>
+                  <td>Малий</td>
+                  <td><span class="pill warn">3 — середня</span> Обмежена публічна інформація (лише основні дані)</td>
+                </tr>
+                <tr>
+                  <td>Cleveland–Cuyahoga County Port Authority – порт м. Клівленд, США</td>
+                  <td>Великий (100+ співр.)</td>
+                  <td><span class="pill good">5 — висока</span> Відкриті звіти, новини, детальна інформація онлайн</td>
+                </tr>
+                <tr>
+                  <td>Erie–Western PA Port Authority – портова адміністрація м. Ері, США</td>
+                  <td>Середній</td>
+                  <td><span class="pill warn">4 — добра</span> Доступні дані про діяльність, проєкти, новини</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout">
+            <strong>Обраний об’єкт:</strong> <span style="color:rgba(255,255,255,.92)">Conneaut Port Authority (CPA)</span><br/>
+            <span class="muted">
+              Причина: висока доступність відкритих даних + наявність «подвійної» діяльності (логістика та рекреація),
+              що створює багате конкурентне поле для аналізу.
+            </span>
+          </div>
+
+          <p>
+            За результатами оцінювання доступності даних та відповідності навчальним цілям, було обрано Conneaut Port Authority (CPA).
+            Обґрунтування вибору: CPA є реальним прикладом невеликої портової організації, яка має багатий набір відкритих джерел інформації
+            (офіційний веб-сайт з публікаціями, фінансові звіти аудиторської служби, прес-релізи тощо).
+            Підприємство було засноване в 1962 році після відкриття морського шляху Святого Лаврентія, з метою розвитку морської торгівлі в регіоні.
+            На сьогодні CPA займає унікальну нішу, поєднуючи портові логістичні операції (перевалка вантажів на Великих Озерах)
+            та рекреаційно-туристичні послуги (марина для човнів, туристична набережна).
+          </p>
+
+          <p>
+            Завдяки такій багатогранності, CPA має різнопланове конкурентне середовище – як конкурує з іншими портами за вантажопотоки,
+            так і з сусідніми прибережними містами за увагу туристів. Крім того, підприємство наразі реалізує стратегічний мастер-план розвитку
+            території порту, що включає залучення інвестицій, розширення марини і екологічні ініціативи.
+            Окремо варто відзначити, що CPA нещодавно отримала галузеве визнання – зокрема, була відзначена премією
+            <em>Pacesetter Award 2024</em> як один із портів США, що досяг приросту міжнародних вантажопотоків.<sup class="ref">[4]</sup>
+          </p>
+        </section>
+
+        <!-- ========================= -->
+        <!-- Stage 2 -->
+        <!-- ========================= -->
+        <section id="stage-2">
+          <h2>Етап 2: Аналіз поточного стану підприємства</h2>
+
+          <h3>Загальна характеристика підприємства</h3>
+          <p>
+            <strong>Conneaut Port Authority (CPA)</strong> – це портова адміністрація міста Конніот в штаті Огайо, США.
+            Організаційно-правова форма – спеціальний публічний орган (портова адміністрація), підпорядкований місцевій владі
+            та керований радою директорів. Портова авторита була заснована у 1962 році для розвитку морської торгівлі в регіоні Великих Озер.
+          </p>
+
+          <h3>Історія та діяльність</h3>
+          <p>
+            За більш ніж 60 років існування CPA пройшла шлях від суто інфраструктурної установи до багатофункціонального оператора
+            водних територій міста. Конніот історично був важливим гаванем на озері Ері – ще в XIX–XX ст. порт використовувався
+            для перевалки зерна, вугілля, лісу, а з середини XX ст. став одним з ключових пунктів транзиту залізної руди для металургії.
+            Сьогодні порт продовжує служити пунктом перевалки навалювальних вантажів: CPA спільно з залізничними операторами
+            обслуговує імпорт руди, сталі, вапняку, зернових та інших масових товарів, виступаючи «великим отримувачем вантажів на Великих Озерах».<sup class="ref">[1]</sup>
+          </p>
+
+          <p>
+            Порт Конніота має залізничне сполучення з внутрішніми районами, що дозволяє ефективно доставляти сировину до промислових центрів.
+            Водночас останні десятиліття економіка регіону зазнала трансформації – занепад частини важкої промисловості змістив акцент на сферу послуг і туризму.<sup class="ref">[1]</sup>
+            Відповідно CPA розширила профіль діяльності: зараз вона управляє великим міським яхтовим причалом (мариною)
+            та прилеглою рекреаційною територією.
+          </p>
+
+          <p>
+            Портова адміністрація надає послуги стоянки й обслуговування човнів, розвитку прибережної інфраструктури
+            (причали, пляж, паркові зони), підтримує заходи для рибалок та туристів. Таким чином, CPA одночасно виконує
+            дві ролі – <strong>комерційного порту</strong> (для бізнесу) та <strong>центру відпочинку</strong> (для громади і гостей міста).
+          </p>
+
+          <h3>Місія та партнерства</h3>
+          <p>
+            Місію CPA можна сформулювати як забезпечення безпечного, екологічно чистого розвитку водних територій Конніота
+            з метою економічного зростання та підвищення якості життя громади. Портова адміністрація тісно співпрацює з місцевою владою і організаціями:
+            реалізує спільні проєкти з міською радою Конніота, залучає грантове фінансування від штату Огайо та федеральних агентств
+            для розвитку інфраструктури. Крім того, CPA активно кооперується з бюро туризму округу Ештабула та підприємцями
+            (ресторанний бізнес, власники гостьових будинків), просуваючи набережну як туристичний осередок регіону.
+          </p>
+
+          <h3>Географія діяльності</h3>
+          <p>
+            Локація CPA – північно-східний кут штату Огайо, на узбережжі озера Ері, неподалік кордону з Пенсильванією.
+            Локально, CPA обслуговує місто Конніот і прилеглі громади (основні користувачі марини – місцеві власники човнів, рибалки, відпочивальники).
+            На національному рівні, порт включений у систему логістики США – через Великі Озера і мережу залізниць зв’язаний з промисловими центрами Середнього Заходу.
+            Міжнародна присутність CPA проявляється у тому, що порт Конніота є пунктом на міжнародному водному шляху Святого Лаврентія –
+            судна під іноземним прапором заходять для завантаження/розвантаження. Також CPA прагне привабити міжнародний круїзний туризм.
+          </p>
+
+          <h3>Основні фінансові показники</h3>
+          <div class="kpi-grid" aria-label="Ключові показники">
+            <div class="kpi">
+              <div class="label">Операційний дохід</div>
+              <div class="value">$518 тис. → $876 тис.</div>
+              <div class="note">Зростання у 2021–2023 рр. (≈ +69%)<sup class="ref">[2]</sup></div>
+            </div>
+            <div class="kpi">
+              <div class="label">Чистий результат</div>
+              <div class="value">≈ +$259 тис.</div>
+              <div class="note">Орієнтир за 2024 р., зростання чистих активів<sup class="ref">[2]</sup></div>
+            </div>
+            <div class="kpi">
+              <div class="label">Штат (адміністрація)</div>
+              <div class="value">≈ 5–7 осіб</div>
+              <div class="note">Частина операцій — на аутсорсі (марина тощо)</div>
+            </div>
+          </div>
+
+          <p>
+            Фінансова стійкість CPA забезпечується поєднанням дохідних потоків від вантажних операцій
+            (оренда причалів, плата за перевалку, пальне для суден) та від рекреаційних послуг
+            (докові збори з човнів, оренда приміщень, продаж пального на марині).
+            За останні роки спостерігається позитивна динаміка доходів.<sup class="ref">[2]</sup>
+            Отримані прибутки реінвестуються у покращення інфраструктури – будівництво нових причалів, берегоукріплення, благоустрій території.
+          </p>
+
+          <p>
+            Кількість працівників CPA невелика, оскільки значна частина операцій (менеджмент марини, технічне обслуговування)
+            передана за контрактом спеціалізованим операторам. Так, з 2022 року управління повсякденними процесами в марині
+            здійснює компанія-аутсорсер Oasis Marinas LLC. Це дозволило оптимізувати витрати – у 2024 році операційні видатки CPA
+            скоротилися майже на 45% завдяки переданню частини функцій зовнішньому менеджменту.
+          </p>
+
+          <h3>Структура та матеріальні ресурси</h3>
+          <ul>
+            <li>комерційний глибоководний причал для вантажних суден;</li>
+            <li>акваторія гавані;</li>
+            <li>марина (яхт-порт) на кілька сотень місць для човнів довжиною до ~30 футів;</li>
+            <li>піщаний пляж та піщана коса (Sandbar), що захищає гавань;</li>
+            <li>будівлі та земельні ділянки на набережній (доки, складські майданчики, парковки; перспективи — магазини/ресторани тощо);</li>
+            <li>об’єкти інфраструктури (берегові споруди, причали, огороджувальні моли) та обладнання (паливні станції, техніка для догляду за територією).</li>
+          </ul>
+
+          <h3>Кадровий потенціал</h3>
+          <p>
+            Основний адміністративний персонал CPA складається з керівництва (голова правління, виконавчий директор/менеджер),
+            бухгалтера, менеджера проєктів і технічного координатора. Правління складається з місцевих представників громади та бізнесу.
+            Невелика чисельність штату компенсується активною взаємодією з підрядниками та волонтерами громади.
+          </p>
+
+          <h3>Репутація та імідж</h3>
+          <p>
+            CPA має добру репутацію як ефективний та відповідальний розпорядник прибережної зони.
+            В очах громади Конніота – це ключова установа, що перетворює занедбану раніше гавань на «візитівку» міста.
+            Портова адміністрація здобула довіру завдяки екологічним ініціативам (зокрема, статус Clean Marina)<sup class="ref">[3]</sup>,
+            а також підтримці місцевого бізнесу. На галузевому рівні CPA відома успіхами в нарощуванні перевалки вантажів
+            і входить до числа портів Великих Озер, які продемонстрували зростання міжнародного тоннажу у 2024 році.<sup class="ref">[4]</sup>
+          </p>
+        </section>
+
+        <!-- ========================= -->
+        <!-- SWOT -->
+        <!-- ========================= -->
+        <section id="swot">
+          <h2>SWOT-аналіз (внутрішні фактори)</h2>
+
+          <p class="muted">
+            Нижче наведено SWOT-матрицю, що узагальнює сильні та слабкі сторони CPA, а також зовнішні можливості і загрози.
+            Кожен фактор оцінений за рівнем важливості (В – високий вплив, С – середній, Н – низький).
+          </p>
+
+          <div class="table-wrap" role="region" aria-label="SWOT-матриця" tabindex="0">
+            <table>
+              <thead>
+                <tr>
+                  <th>Сильні сторони (Strengths)</th>
+                  <th class="nowrap">Важливість</th>
+                  <th>Слабкі сторони (Weaknesses)</th>
+                  <th class="nowrap">Важливість</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Різнопланова діяльність і ресурси: поєднання вантажного терміналу і туристичної марини, диверсифікація доходів.<sup class="ref">[1][3]</sup></td>
+                  <td class="center"><span class="pill good">В</span></td>
+                  <td>Обмежені масштаби і фінанси: залежність великих проєктів від грантів/дотацій.</td>
+                  <td class="center"><span class="pill good">В</span></td>
+                </tr>
+                <tr>
+                  <td>Вигідне географічне положення: стикування Огайо і Пенсильванії, мінімізація транспортних відстаней.</td>
+                  <td class="center"><span class="pill warn">С</span></td>
+                  <td>Залежність від сезону: марина і туризм — переважно весна-літо; навігація на Озерах сезонна.</td>
+                  <td class="center"><span class="pill warn">С</span></td>
+                </tr>
+                <tr>
+                  <td>Інфраструктура і зв’язки: глибоководний причал + під’їзна колія, ефективна перевалка масових вантажів.</td>
+                  <td class="center"><span class="pill good">В</span></td>
+                  <td>Низька впізнаваність бренду на національному рівні порівняно з великими портами.</td>
+                  <td class="center"><span class="pill warn">С</span></td>
+                </tr>
+                <tr>
+                  <td>Екологічна відповідальність і якість послуг: статус Clean Marina, позитивні відгуки відвідувачів.<sup class="ref">[3]</sup></td>
+                  <td class="center"><span class="pill good">В</span></td>
+                  <td>Обмежений асортимент послуг для туристів: мало розваг/сервісів поруч, що обмежує тривалість перебування.</td>
+                  <td class="center"><span class="pill warn">С</span></td>
+                </tr>
+                <tr>
+                  <td>Партнерства і підтримка громади: взаємодія з владою та бізнесом, лояльність місцевої аудиторії.<sup class="ref">[3]</sup></td>
+                  <td class="center"><span class="pill warn">С</span></td>
+                  <td>Вузький штат фахівців: ризик залежності від кількох ключових людей, потреба у підрядниках.</td>
+                  <td class="center"><span class="pill warn">С</span></td>
+                </tr>
+              </tbody>
+
+              <thead>
+                <tr>
+                  <th>Можливості (Opportunities)</th>
+                  <th class="nowrap">Важливість</th>
+                  <th>Загрози (Threats)</th>
+                  <th class="nowrap">Важливість</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Розвиток туризму і нові ринки: outdoor-тренди, фестивалі/регати, круїзи Великих Озер.<sup class="ref">[1][3]</sup></td>
+                  <td class="center"><span class="pill good">В</span></td>
+                  <td>Економічні коливання: залежність вантажів від промисловості/цін на сировину; інфляція і пальне.</td>
+                  <td class="center"><span class="pill good">В</span></td>
+                </tr>
+                <tr>
+                  <td>Гранти та державна підтримка: програми розвитку портів/інфраструктури, екологічні проєкти.<sup class="ref">[3]</sup></td>
+                  <td class="center"><span class="pill good">В</span></td>
+                  <td>Конкуренція інших портів: Ері, Аштабула, Клівленд, Толідо; конкуренція в туризмі з береговими містами.</td>
+                  <td class="center"><span class="pill good">В</span></td>
+                </tr>
+                <tr>
+                  <td>Технологічні новації: онлайн-бронювання марини, автоматизація, моніторинг обладнання.<sup class="ref">[3]</sup></td>
+                  <td class="center"><span class="pill warn">С</span></td>
+                  <td>Природні та екологічні ризики: шторми, рівень води, ерозія, інвазивні види, посилення еко-норм.<sup class="ref">[1]</sup></td>
+                  <td class="center"><span class="pill good">В</span></td>
+                </tr>
+                <tr>
+                  <td>Розширення співпраці: залучення інвесторів (готельно-ресторанні/розважальні об’єкти), логістичні партнерства.</td>
+                  <td class="center"><span class="pill warn">С</span></td>
+                  <td>Зміни у законодавстві: екологічні вимоги, митні/тарифні правила міжнародної торгівлі.</td>
+                  <td class="center"><span class="pill warn">С</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="soft" style="margin-top:12px">
+            <strong>Висновок зі SWOT:</strong>
+            <p class="muted" style="margin-top:6px">
+              Conneaut Port Authority має значні сильні сторони — унікальний профіль діяльності, вигідне розташування,
+              підтримку громади та екологічну репутацію. Водночас слабкі місця пов’язані з невеликим масштабом і сезонністю.
+              Стратегічно важливо використати можливості (туризм, гранти) для розширення послуг і нейтралізації загроз.
+              Для протидії конкуренції великих портів CPA доцільно робити ставку на гнучкість, партнерства з місцевими гравцями
+              та диференційований туристичний продукт.
+            </p>
+          </div>
+        </section>
+
+        <!-- ========================= -->
+        <!-- PESTLE -->
+        <!-- ========================= -->
+        <section id="pestle">
+          <h2>PESTLE-аналіз макросередовища</h2>
+
+          <p class="muted">
+            Для повноти аналізу розглянемо фактори макросередовища за методикою PESTLE (Political, Economic, Social, Technological, Legal, Environmental).
+            Кожен фактор описано та оцінено його ймовірний вплив на діяльність CPA.
+          </p>
+
+          <div class="table-wrap" role="region" aria-label="PESTLE-таблиця" tabindex="0">
+            <table>
+              <thead>
+                <tr>
+                  <th class="nowrap">Фактор</th>
+                  <th>Аспекти для аналізу</th>
+                  <th>Вплив на CPA</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Political</strong> (Політичні)</td>
+                  <td>Стабільність політики; програми підтримки портів; міжнародні відносини США</td>
+                  <td>
+                    Позитивний/нейтральний: політичне середовище відносно стабільне; підтримка інфраструктури — плюс.
+                    Ризик: геополітична напруженість може впливати на торгівлю та туристичні потоки.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Economic</strong> (Економічні)</td>
+                  <td>ВВП; промислове виробництво; інфляція; доходи населення; курси валют</td>
+                  <td>
+                    Змінний вплив: зростання промисловості підсилює вантажообіг, зростання доходів — туризм.
+                    Ризик: інфляція/рецесія, дорожче пальне, коливання попиту на сировину.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Social</strong> (Соціальні)</td>
+                  <td>Демографія; стиль життя; цінності громади; рівень освіти</td>
+                  <td>
+                    Переважно позитивний: тренд на outdoor-відпочинок і екосвідомість підсилюють попит на риболовлю/яхтинг/екотуризм.
+                    Ризик: відтік молоді з малих міст частково зменшує локальну аудиторію.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Technological</strong> (Технологічні)</td>
+                  <td>Цифровізація; онлайн-бронювання; інновації в безпеці та екології</td>
+                  <td>
+                    Переважно позитивний: онлайн-сервіси та автоматизація підвищують ефективність і привабливість.
+                    Важливо: інвестувати у технології поступово, з огляду на бюджет.<sup class="ref">[3]</sup>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Legal</strong> (Правові)</td>
+                  <td>Еконорми; регуляції портів; трудове право; правила грантів/фінансування</td>
+                  <td>
+                    Нейтральний/стримуючий: посилення вимог може збільшувати витрати або затримувати проєкти,
+                    але проактивний підхід знижує ризики.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Environmental</strong> (Екологічні)</td>
+                  <td>Клімат; шторми; рівень води; ерозія; екосвідомість; енергоефективність</td>
+                  <td>
+                    Значний вплив: природні умови напряму впливають на інфраструктуру та сезонність.
+                    Статус Clean Marina — плюс для іміджу, але потрібні інвестиції у стійкість.<sup class="ref">[1][3]</sup>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="soft" style="margin-top:12px">
+            <strong>Висновок з PESTLE:</strong>
+            <p class="muted" style="margin-top:6px">
+              Макросередовище загалом сприятливе для CPA — особливо соціальні та технологічні тренди, що підтримують зростання клієнтської бази.
+              Найбільші виклики — економічні цикли та екологічні фактори. CPA варто підтримувати гнучкість і планування на випадок криз,
+              а також інвестувати у стійкість до кліматичних змін.
+            </p>
+          </div>
+        </section>
+
+        <!-- ========================= -->
+        <!-- Stage 3 -->
+        <!-- ========================= -->
+        <section id="stage-3">
+          <h2>Етап 3: Аналіз конкурентів</h2>
+
+          <h3>Ідентифікація конкурентів</h3>
+          <p><strong>Прямі конкуренти CPA</strong> — інші порти з подібними послугами і аудиторією (вантажовідправники, судновласники, туристи):</p>
+          <ul>
+            <li><strong>Ashtabula Harbor</strong> (Port of Ashtabula) — найближчий порт на захід (~30 км), вантажний термінал + невелика марина.</li>
+            <li><strong>Erie Port</strong> (Erie–Western Pennsylvania Port Authority) — порт у місті Ері (~60 км на схід), вантажі + сильний туристичний кластер.</li>
+            <li><strong>Port of Cleveland</strong> (Cleveland–Cuyahoga Port Authority) — великий порт (~150 км), ресурси та національний масштаб.</li>
+            <li><strong>Lorain Port and Finance Authority</strong> — фокус на реконструкції waterfront, рекреації та залученні інвестицій.</li>
+          </ul>
+
+          <p><strong>Непрямі конкуренти</strong> — альтернативи, що закривають схожі потреби:</p>
+          <ul>
+            <li><strong>Залізничні та автотранспортні компанії</strong> — як альтернативні логістичні маршрути для вантажів.</li>
+            <li><strong>Сусідні рекреаційні локації</strong> — інші прибережні місця відпочинку (пляжі, парки, курортні містечка).</li>
+          </ul>
+
+          <h3>Порівняльний аналіз конкурентів</h3>
+          <div class="table-wrap" role="region" aria-label="Порівняльна таблиця конкурентів" tabindex="0">
+            <table>
+              <thead>
+                <tr>
+                  <th>Конкурент</th>
+                  <th class="nowrap">Частка ринку<br/>(позиція)</th>
+                  <th class="nowrap">Цінова політика<br/>(рівень)</th>
+                  <th class="nowrap">Маркетинг<br/>(активність)</th>
+                  <th>Сильні сторони</th>
+                  <th class="nowrap">Канали збуту<br/>(охоплення)</th>
+                  <th class="nowrap">Сумарний рейтинг</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Conneaut Port Authority (CPA)</strong> (база)</td>
+                  <td>2 — малий гравець</td>
+                  <td>4 — доступні ціни</td>
+                  <td>4 — регулярний маркетинг</td>
+                  <td>4 — вантаж + туризм, екостатус</td>
+                  <td>3 — базові онлайн/локально</td>
+                  <td class="center"><span class="pill">17</span></td>
+                </tr>
+                <tr>
+                  <td>Port of Ashtabula</td>
+                  <td>3 — середній</td>
+                  <td>4 — доступні ціни</td>
+                  <td>2 — слабкий маркетинг</td>
+                  <td>4 — глибока гавань, залізничний вузол</td>
+                  <td>3 — традиційні зв’язки</td>
+                  <td class="center"><span class="pill">16</span></td>
+                </tr>
+                <tr>
+                  <td>Erie Port Authority</td>
+                  <td>4 — великий</td>
+                  <td>3 — середні ціни</td>
+                  <td>4 — активний маркетинг</td>
+                  <td>4 — Presque Isle, диверсифікація</td>
+                  <td>4 — багатоканальність</td>
+                  <td class="center"><span class="pill">19</span></td>
+                </tr>
+                <tr>
+                  <td>Port of Cleveland</td>
+                  <td>5 — лідер</td>
+                  <td>2 — дорожчі тарифи</td>
+                  <td>3 — помірний</td>
+                  <td>5 — масштаб, інфраструктура</td>
+                  <td>5 — всі канали</td>
+                  <td class="center"><span class="pill">20</span></td>
+                </tr>
+                <tr>
+                  <td>Lorain Port Authority</td>
+                  <td>2 — малий</td>
+                  <td>5 — дуже конкурентні</td>
+                  <td>5 — дуже активний</td>
+                  <td>3 — стандартні переваги</td>
+                  <td>3 — локальний фокус</td>
+                  <td class="center"><span class="pill">18</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="soft" style="margin-top:12px">
+            <strong>Висновок:</strong>
+            <p class="muted" style="margin-top:6px">
+              CPA показує себе конкурентною у своїй ніші — завдяки доступним цінам та активності для цільової аудиторії (громада + малий/середній бізнес).
+              Вона поступається більшим портам за масштабом, але виграє за рахунок унікального «міксу» вантажів і рекреації та екологічного іміджу.
+              Стратегічно доцільно не змагатися напряму з лідерами у контейнерних/масштабних сегментах, а зміцнювати нішеві напрями:
+              регіональні навалювальні вантажі, обслуговування малих суден, туризм і відпочинок.
+            </p>
+          </div>
+        </section>
+
+        <!-- ========================= -->
+        <!-- Stage 4 -->
+        <!-- ========================= -->
+        <section id="stage-4">
+          <h2>Етап 4: Сегментація та позиціонування</h2>
+
+          <h3>Сегментація ринку</h3>
+          <p>
+            Ринок CPA неоднорідний, адже включає як бізнес-клієнтів (B2B) – компанії, що користуються логістичними послугами,
+            так і кінцевих споживачів (B2C) – туристів, власників човнів, відвідувачів марини. Проведено сегментацію за чотирма критеріями:
+          </p>
+
+          <h3>1) Географічна сегментація</h3>
+          <ul>
+            <li><strong>Локальний сегмент</strong> – місто Конніот і прилеглі громади округу Ештабула.</li>
+            <li><strong>Національний сегмент</strong> – ширший регіон США (передусім Середній Захід): промислові клієнти, туристи з інших штатів.</li>
+            <li><strong>Міжнародний сегмент</strong> – іноземні судноплавні компанії та туристи (частка невелика, але перспективна).</li>
+          </ul>
+
+          <h3>2) Демографічна сегментація</h3>
+          <ul>
+            <li><strong>Вік:</strong> ядро 26–45 та 45+ (молодь 15–25 менш представлена).</li>
+            <li><strong>Стать:</strong> загалом універсально; рибалки/капітани частіше чоловіки, туристичний сегмент — більш рівномірний.</li>
+            <li><strong>Дохід:</strong> середній та вище середнього (особливо для користування мариною).</li>
+            <li><strong>Освіта:</strong> вища/середня спеціальна; у B2B — частіше вища.</li>
+          </ul>
+
+          <h3>3) Психографічна сегментація</h3>
+          <ul>
+            <li><strong>Спосіб життя:</strong> outdoor-орієнтований, активний відпочинок; частина — сімейний «спокійний» релакс.</li>
+            <li><strong>Цінності:</strong> природа, комфорт, автентичність, екологічність, гордість за громаду.</li>
+            <li><strong>Інтереси:</strong> риболовля, яхтинг, водні види спорту, спостереження за птахами, винний туризм, історія.</li>
+            <li><strong>Риси:</strong> прагнення до безпеки, дружелюбність; у B2B — фокус на надійність та ефективність.</li>
+          </ul>
+
+          <h3>4) Поведінкова сегментація</h3>
+          <ul>
+            <li><strong>Частота:</strong> регулярні (місцеві), сезонні (літні), разові (події/транзит).</li>
+            <li><strong>Лояльність:</strong> висока в громаді; середня у зовнішніх сегментах (потрібні програми лояльності).</li>
+            <li><strong>Чутливість до ціни:</strong> висока в B2B; середня в B2C (готовність платити за якісний досвід).</li>
+            <li><strong>Канали:</strong> офлайн домінує локально, але онлайн набирає ваги для зовнішніх клієнтів (сайт, соцмережі, партнерства).</li>
+          </ul>
+
+          <h3>Цільова аудиторія</h3>
+          <div class="soft">
+            <p style="margin:0 0 10px"><strong>1) Регіональні бізнес-клієнти (B2B)</strong></p>
+            <p class="muted" style="margin:0">
+              Компанії Північно-Східного Огайо та Західної Пенсильванії, які потребують перевалки навалювальних вантажів
+              (металургійна сировина, будматеріали, зерно). Цінують надійність, низькі витрати та персональний підхід.
+            </p>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,.12); margin:12px 0" />
+            <p style="margin:0 0 10px"><strong>2) Любителі активного відпочинку та сімейні туристи (B2C)</strong></p>
+            <p class="muted" style="margin:0">
+              Власники невеликих суден, рибалки-аматори, сім’ї, що подорожують регіоном Великих Озер (переважно 30–60 років).
+              Шукають безпечне, мальовниче місце відпочинку, цінують екологічність і «домашню» атмосферу Конніота.
+            </p>
+          </div>
+        </section>
+
+        <!-- ========================= -->
+        <!-- Positioning -->
+        <!-- ========================= -->
+        <section id="positioning">
+          <h2>Позиціонування підприємства</h2>
+
+          <div class="callout">
+            <strong>Формула позиціонування:</strong><br/>
+            <span class="muted">
+              CPA – це інноваційний невеликий порт на озері Ері, який поєднує ефективність промислової гавані
+              з гостинністю курорту для відпочинку.
+            </span>
+          </div>
+
+          <p>
+            CPA відрізняється від конкурентів тим, що пропонує унікальний симбіоз: для бізнесу – це доступний, зручний порт
+            з персональним підходом (без бюрократії великих гаваней), а для громади і туристів – привабливе місце відпочинку
+            з мальовничою природою та якісною інфраструктурою, яке підтримується у чистоті й порядку.
+            Порт позиціонується як “Heart of Conneaut” – серце Конніота, що драйвить економічний розвиток міста і одночасно дарує життя його набережній.
+          </p>
+
+          <h3>Основні атрибути позиціонування</h3>
+          <ul>
+            <li><strong>Локація та автентичність:</strong> затишніша атмосфера, історичний шарм, близькість до виноробного району.</li>
+            <li><strong>Екологічна та соціальна відповідальність:</strong> стійкий розвиток, екопросвітницькі заходи, чистота прибережної зони.</li>
+            <li><strong>Широкий спектр послуг:</strong> “one-stop port” – вантаж + відпочинок в одній екосистемі.</li>
+            <li><strong>Партнерство з клієнтом:</strong> персональний підхід завдяки невеликому масштабу, адаптація під потреби.</li>
+          </ul>
+
+          <div class="soft">
+            <strong>Ключове повідомлення маркетингу (приклад):</strong>
+            <p class="muted" style="margin-top:6px">
+              «Конніот – ваш дружній порт: де бізнес знаходить шлях до світу, а мандрівники – куточок раю на озері».
+            </p>
+          </div>
+        </section>
+
+        <!-- ========================= -->
+        <!-- Sources -->
+        <!-- ========================= -->
+        <section id="sources">
+          <h2>Джерела (список)</h2>
+          <p class="muted">
+            Нижче — перелік доменів/джерел, що згадуються у матеріалі. У тексті вони позначені номерами у вигляді <sup class="ref">[n]</sup>.
+          </p>
+
+          <div class="sources">
+            <ol>
+              <li><strong>[1]</strong> dam.assets.ohio.gov</li>
+              <li><strong>[2]</strong> ohioauditor.gov</li>
+              <li><strong>[3]</strong> businessviewmagazine.com</li>
+              <li><strong>[4]</strong> seaway.dot.gov</li>
+            </ol>
+          </div>
+        </section>
+
+      </article>
+    </main>
+  </div>
+</body>
+</html>
